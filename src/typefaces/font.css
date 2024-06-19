@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'LESLIE';
+    src: url('SIYUAN.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'HWMC';
+    src: url('HWMC.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SCJS';
+    src: url('SCJS.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TEST1';
+    src: url('test1.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TEST2';
+    src: url('test2.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JBS';
+    src: url('JBS.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
