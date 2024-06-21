@@ -60,7 +60,7 @@
 				<circlechart class="mapcircle" :currentCountry="choosecountry" id="mapstep3"></circlechart>
 			  </el-aside>
 		      <el-main class="mapcontainmain" style="overflow:hidden">
-				 <mapchart :mapData="selectedData" :yeardata="yeardata" @choosecuntry="handelcountry" @cuntryevent="handelevent" id="mapstep4"></mapchart>
+				 <mapchart :mapData="selectedData" :yeardata="yeardata" @choosecuntry="handelcountry" @cuntryevent="handelevent" @choosecountryflag="handelflag" id="mapstep4"></mapchart>
 				 
 				 
 				 <div id="mapstep5" class="mapchoosecentry">
@@ -77,24 +77,34 @@
 				  
 				  
 				  
-				 <div id="mapstep6">
+				
 				 	
 				
 				 <div class="maptime">
+					  <div id="mapstep6">
 					 {{choosetimetitle}}&nbsp;
 					 <img src="../assets/map/角标左.png" alt="" class="mapjbz"/>
 					  {{choosetimeinfo}}
 				     <img src="../assets/map/角标右.png" alt="" class="mapjby"/>
+					 </div>
 					 <br/> <br/>
-					  <img src="../assets/map/国家名称.png" alt="" class="mapgjmc"/>
-					  <div class="mapcountry">
-					  {{choosecountry}}
-					  </div>
-					  <div class="mapcountryinfo">
-					  {{choosecountryinfo}}
-					  </div>
+					
+					
+					  <img :src="choosecountryflag" class="mapgjmc" />
+					 <!-- <div class="mapgjmcmb"></div> -->
+					 <!-- <div class="countrymiddle">
+						  <div class="mapcountry">
+							<br/>
+						  {{choosecountry}}
+						  </div>
+					  </div> -->
 					  
-				 </div>
+					  <div class="mapcountryinfo">
+						   <div id="mapstep7">
+					  {{choosecountryinfo}}
+					       </div>
+					  </div>
+
 				  </div>
 			  </el-main>
 		    </el-container>
@@ -124,6 +134,7 @@ const choosetime=ref(1)
 const choosetimetitle=ref("1949-1970")
 const choosetimeinfo=ref("初登外交舞台")
 const choosecountry=ref("美国")
+const choosecountryflag=ref("src/assets/flags/US.svg")
 const choosecountryinfo=ref("美国助蒋，四十万人上书请愿促杜鲁门立撤驻华美军，战后经济恐慌。")
 const selectedData=ref()
 const yeardata=ref()
@@ -198,14 +209,24 @@ const getguide=()=>{
 	    element: '#mapstep6',
 	    popover: {
 	      className: 'first-step-popover-class',
-	      title: '外交信息',
-	      description: '展示选中的外交时期，以及选中国家在该时期具体发生的外交事件。',
+	      title: '外交时期',
+	      description: '展示选中的外交时期。',
 	      position: 'left',
 	  
 	  		  
 	    }
 	  },
-
+	  {
+	    element: '#mapstep7',
+	    popover: {
+	      className: 'first-step-popover-class',
+	      title: '外交信息',
+	      description: '展示选中国家在选中时期具体发生的外交事件。',
+	      position: 'left',
+	  
+	  		  
+	    }
+	  },
 	]);
 
 	driver.start();
@@ -231,8 +252,12 @@ onMounted(() => {
 const handelevent=(event)=>{
 	choosecountryinfo.value=event
 }
+const handelflag=(flag)=>{
+	choosecountryflag.value=flag
+}
 const handelcountry=(country)=>{
 	choosecountry.value=country
+	
 }
 const gettime=(item)=>{
 	choosecontrynames.value=[]
@@ -574,19 +599,11 @@ div#driver-page-overlay {
 	font-family: "HWMC";
 	color:white;
 	margin-left:15vw;
-	margin-top: -6vh;
+	margin-top: -8vh;
 	position: absolute;
 	text-align: left;
 }
-.mapcountry{
-	width: 12vw;
-	margin-left:1vw;
-	margin-top: 1.5vh;
-	font-size: 35px;
-	text-align: center;
-	font-family: "JBS";
-	color:white;
-}
+
 .maptime{
 	margin-left:2vw;
 	margin-top: 10vh;
@@ -595,12 +612,46 @@ div#driver-page-overlay {
 	font-family: "HWMC";
 	color:white;
 	height:25vh;
+	
+}
+.countrymiddle {
+    left: 38vw;
+    top: 78vh;
+    width: 12vw;
+    display: flex;
+    justify-content: center; /* 在水平方向居中 */
+    align-items: center; /* 在垂直方向居中 */
+    position: absolute;
+
+	
+}
+
+.mapcountry {
+    font-size: 42px;
+    text-align: center;
+    font-family: "JBS";
+	font-weight:bold;
+    color: white;
+    z-index: 999;
+}
+.mapgjmcmb{
+	left:38vw;
+	top: 78vh;
+	width:12vw;
+	height:19vh;
+	position: absolute;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.6);;
+	
 }
 .mapgjmc{
-	width:14vw;
-	height:8vh;
+	left:39.5vw;
+	top: 79vh;
+	width:11vw;
+	height:auto;
 	position: absolute;
 	z-index: 99;
+	
 
 }
 .mapjby{

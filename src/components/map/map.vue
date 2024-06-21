@@ -121,6 +121,7 @@ export default {
         this.flagurl = searchData[0].url;
 		this.$emit("choosecuntry", params.name);
 		this.$emit("cuntryevent", this.currentEvent);
+		this.$emit("choosecountryflag", this.flagurl);
     }
   },
     

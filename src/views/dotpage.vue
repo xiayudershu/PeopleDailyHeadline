@@ -456,7 +456,7 @@ export default {
 		this.mouseXText = this.svg.select(".mouse-x-text")
 		    .attr("class", "text")
 		    .attr("x", 10)
-		    .attr("y", 80)
+		    .attr("y", 60)
 		    .style("fill", "white")
 		    .style("font-size", "20px")
 			.text("年份: " + Math.round(1953 + (this.mousex-120) / 15)).attr("x", this.mousex-95); 
@@ -483,50 +483,38 @@ export default {
 		
 		updateVerticalLine(event) {
 	
+      	
 		  let mouseX = Math.round(event.offsetX);
 		  this.mousex=mouseX;
-		  this.verticalLine.attr("x1", mouseX+10).attr("x2", mouseX+10);
-		  this.mouseXText.text("年份: " + Math.round(1953 + (mouseX-120) / 15)).attr("x", mouseX -95);
-		  this.mouseXText2.text(this.selectvalue1).attr("x", mouseX +20);
-		  this.mouseXText3.text(this.selectvalue2).attr("x", mouseX +20).attr("y", 600);
+		  if(Math.round(1953 + (mouseX-120) / 15)<=2022&&Math.round(1953 + (mouseX-120) / 15)>=1946){
+			  
+			  if(mouseX<=60){
+			  			  this.verticalLine.attr("x1", mouseX+10).attr("x2", mouseX+10);
+			  			  this.mouseXText.text("年份: " + Math.round(1953 + (mouseX-120) / 15)).attr("x", mouseX +20);
+			  			  this.mouseXText2.text(this.selectvalue1).attr("x", mouseX +20);
+			  			  this.mouseXText3.text(this.selectvalue2).attr("x", mouseX +20).attr("y", 600);
+			  }
+			  else if(mouseX>=1100){		
+			  	this.verticalLine.attr("x1", mouseX+10).attr("x2", mouseX+10);
+			  	this.mouseXText.text("年份: " + Math.round(1953 + (mouseX-120) / 15)).attr("x", mouseX -95);
+			  	this.mouseXText2.text(this.selectvalue1).attr("x", mouseX -40);
+			  	this.mouseXText3.text(this.selectvalue2).attr("x", mouseX -40).attr("y", 600);
+			  }
+			  else{
+			  		
+			  			  this.verticalLine.attr("x1", mouseX+10).attr("x2", mouseX+10);
+			  			  this.mouseXText.text("年份: " + Math.round(1953 + (mouseX-120) / 15)).attr("x", mouseX -95);
+			  			  this.mouseXText2.text(this.selectvalue1).attr("x", mouseX +20);
+			  			  this.mouseXText3.text(this.selectvalue2).attr("x", mouseX +20).attr("y", 600);
+			  }
+			  	
+		  }
+
 	
 	
 		  
 		},
 		handleClickNot(value){
-
-			if(this.selectvalue2==''){
-				this.middle="false";
-	             this.selectvalue1='';
-				let map =d3.select(this.$refs.dots);
-				map.selectAll("foreignObject, image").remove();
-				
-	 
-			}
-			else{
-				if(value==this.selectvalue1){
-					this.up="false";
-					this.selectvalue1='';
-				}
-				if(value==this.selectvalue2){
-					this.down="false";
-					this.selectvalue2='';
-				}
-			}
-			console.log(this.middle)
-			console.log(this.up)
-			console.log(this.down)
-			console.log(this.selectvalue1)
-			console.log(this.selectvalue2)
-	
-		    let map =d3.select(this.$refs.dots);
-			let notid="[id='"+value+"']"
-			map.selectAll(notid).remove();
-			map.selectAll("foreignObject, image").remove();
-			
-
-			
-			
 			
 			if(value=="财经"){
 				this.dotlabel1=false;
@@ -546,6 +534,41 @@ export default {
 			if(value=="体育"){
 				this.dotlabel6=false;
 			}
+
+			if(this.selectvalue2==''){
+				this.middle="false";
+	             this.selectvalue1='';
+				let map =d3.select(this.$refs.dots);
+				map.selectAll("foreignObject, image").remove();
+				
+	 
+			}
+			else{
+				this.middle="false";
+				this.up="false";
+				this.down="false";
+				if(value==this.selectvalue1){
+					this.handleClick(this.selectvalue2) 
+				
+				}
+				else if(value==this.selectvalue2){
+					this.handleClick(this.selectvalue1) 
+				
+				}
+			
+				
+			}
+			console.log(this.middle)
+			console.log(this.up)
+			console.log(this.down)
+			console.log(this.selectvalue1)
+			console.log(this.selectvalue2)
+	
+		    let map =d3.select(this.$refs.dots);
+			let notid="[id='"+value+"']"
+			map.selectAll(notid).remove();
+			map.selectAll("foreignObject, image").remove();	
+
 		},
 		handleClick(value) {
 
@@ -1374,7 +1397,7 @@ a {
 .maind3 {
 	position: absolute;
 	left:15vw;
-	top: 5vh;
+	top: 7vh;
 	height: 88vh;
 	background-color: "#EBA281";
 	z-index:1000;
@@ -1392,7 +1415,7 @@ a {
 }
 .dotlabel1{
 	position: absolute;
-	left:0.5vw;
+	left:-2vw;
 	top:2vh;
 	width:124px;
 	height:82px;
@@ -1401,7 +1424,7 @@ a {
 }
 .dotlabel2{
 	position: absolute;
-	left:1vw;
+	left:-1.5vw;
 	top:14vh;
 	width:120px;
 	height:80px;
@@ -1410,7 +1433,7 @@ a {
 }
 .dotlabel3{
 	position: absolute;
-	left:1.5vw;
+	left:-1vw;
 	top:27vh;
 	width:120px;
 	height:80px;
@@ -1419,7 +1442,7 @@ a {
 }
 .dotlabel4{
 	position: absolute;
-	left:1.5vw;
+	left:-1vw;
 	top:40vh;
 	width:120px;
 	height:80px;
@@ -1428,7 +1451,7 @@ a {
 }
 .dotlabel5{
 	position: absolute;
-	left:2vw;
+	left:-0.5vw;
 	top:53vh;
 	width:120px;
 	height:80px;
@@ -1437,7 +1460,7 @@ a {
 }
 .dotlabel6{
 	position: absolute;
-	left:2vw;
+	left:-0.5vw;
 	top:66vh;
 	width:120px;
 	height:80px;
@@ -1446,7 +1469,7 @@ a {
 }
 .dotnotlabel1{
 	position: absolute;
-	left:2vw;
+	left:-0.5vw;
 	top:2vh;
 	width:120px;
 	height:80px;
@@ -1455,7 +1478,7 @@ a {
 }
 .dotnotlabel2{
 	position: absolute;
-	left:2vw;
+	left:-0.5vw;
 	top:14vh;
 	width:120px;
 	height:80px;
@@ -1464,7 +1487,7 @@ a {
 }
 .dotnotlabel3{
 	position: absolute;
-	left:2.5vw;
+	left:0vw;
 	top:27vh;
 	width:120px;
 	height:80px;
@@ -1473,7 +1496,7 @@ a {
 }
 .dotnotlabel4{
 	position: absolute;
-	left:2.5vw;
+	left:0vw;
 	top:40vh;
 	width:120px;
 	height:80px;
@@ -1482,7 +1505,7 @@ a {
 }
 .dotnotlabel5{
 	position: absolute;
-	left:3vw;
+	left:0.5vw;
 	top:53vh;
 	width:120px;
 	height:80px;
@@ -1491,7 +1514,7 @@ a {
 }
 .dotnotlabel6{
 	position: absolute;
-	left:3vw;
+	left:0.5vw;
 	top:66vh;
 	width:120px;
 	height:80px;
@@ -1501,8 +1524,8 @@ a {
 .dotmainbody{
 	position: absolute;
 	margin-top: 0vh;
-	left:15vw;
-    width: 82.5vw;
+	left:12vw;
+    width: 84vw;
     height: 88vh;
     z-index:999;
 }
