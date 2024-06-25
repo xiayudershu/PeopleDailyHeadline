@@ -31,10 +31,14 @@
           <div v-html="msg.content"></div>
           </div>
         </div>
+
+		
 		<br/><br/>
+	
       </div>
+	  <div class="askingtemp">
 	<br/><br/><br/><br/>
-	  
+	  </div>
     </div>
     
 	<div class="isasking" v-if="ifasking==true">
@@ -73,12 +77,11 @@ const sessiontest = ref([])
 onMounted(() => {
   const temp= JSON.parse(localStorage.getItem('chattinginfolast') || '[]');
 
-  if(temp){
+  if(temp.length!=0){
       ifpre.value=false;
 	  sessiontest.value=temp
   }
   else{
-	
 	  sessiontest.value=[]
   }
 });
@@ -107,6 +110,7 @@ const getpreask=()=>{
 	input.value='';
 }
 const askquestion=()=>{
+if(ifasking.value==false){
 	ifasking.value=true
 	
     const message = {
@@ -115,13 +119,14 @@ const askquestion=()=>{
     };
 	sessiontest.value.push(message)
 	
-
+    const element = document.querySelector('.askingtemp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
 	getanswer(input.value)
 
 	
 	input.value='';
-
+}
 }
 const getanswer=(input)=>{
 	const answerText=ref('')
@@ -252,10 +257,10 @@ const getanswer=(input)=>{
 }
 .isasking{
 	position: absolute;
-	bottom: 12vh;
+	bottom: 11vh;
 	width:100px;
 	right:12vw;
-	background-color: #ffaf66;
+	background-color: #F56C6C;
 	color:white;
 	border-radius: 10px;
 }

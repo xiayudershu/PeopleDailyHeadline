@@ -34,7 +34,7 @@ export default {
 		  frequency:  [1642, 760, 12318, 11968, 3846, 2412, 3922, 4016, 1564, 24, 4],
 		  word:'苏联',
 		  index:1,
-		  url:["http://paper.people.com.cn/rmrb/html/2024-04/29/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/28/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/30/nbs.D110000renmrb_01.htm"]
+		  // url:["http://paper.people.com.cn/rmrb/html/2024-04/29/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/28/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/30/nbs.D110000renmrb_01.htm"]
 	   },
       clickedWord: '',
 	words2 :[
@@ -101,7 +101,7 @@ export default {
 	     this.chartData.description=foundWord.descriptions;
 		 this.chartData.frequency=foundWord.frequency;
 		 this.chartData.word=foundWord.word;
-		 this.chartData.url=foundWord.url;
+		 // this.chartData.url=foundWord.url;
       } else {
         console.log('未找到匹配的词描述');
       }

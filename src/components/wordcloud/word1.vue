@@ -34,7 +34,7 @@ export default {
 		   frequency:[7268, 2052, 34316, 44764, 40404, 2770, 3698, 5688, 9080, 8688, 6245],
 		   word:'人民',
 		   index:0,
-		   url:["http://paper.people.com.cn/rmrb/html/2024-04/29/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/28/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/30/nbs.D110000renmrb_01.htm"]
+		   // url:["http://paper.people.com.cn/rmrb/html/2024-04/29/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/28/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/30/nbs.D110000renmrb_01.htm"]
 		   
 	   },
       clickedWord: '',
@@ -63,7 +63,7 @@ export default {
       {'word': '土地改革', 'descriptions': ['南斯拉夫的土地改革', '土地改革中的几个问题', '冀南组织大批干部突击落后村加紧完成新区土地改革武训深入运动进行翻身大检查健全组织开展时事教育为全面抵抗胜利奠定基础'], 'frequency': [496, 20, 498, 118, 0, 0, 2, 8, 6, 10, 2]},
       {'word': '统一', 'descriptions': ['统一推行新币还要爱护旧币太行确定稳定物价办法', '保加利亚农民联盟维护祖国阵线统一', '统一领导按活分红潞城解决运输支差矛盾'], 'frequency': [574, 92, 1650, 2766, 2204, 276, 734, 1228, 2414, 1468, 679]},
       {'word': '政权', 'descriptions': ['华北人民监察院决聘通讯检查员联系群众监督政权及时纠正错误改进工作巩固国家纪律', '东北冬季攻势又获一大胜利新立屯歼守敌一师新民县已建立民主政权分粮食给雇贫  坚决贯彻团结中农保护工商业的政策', '东蒙自治会发言人声明坚决抗击进犯蒋军提议成立内蒙统一政权'], 'frequency': [226, 20, 278, 772, 1742, 94, 290, 320, 304, 150, 61]},
-      {'word': '解放日报', 'descriptions': ['张永泰的道路解放日报社论', '解放日报社论号召准备开展春耕生产完成土地改革是开展生产的关键战斗部队应该特别注意节约民力', '热烈响应解放日报号召冀鲁豫前线部队普遍学习王克勤'], 'frequency': [168, 4, 16, 24, 24, 0, 0, 8, 12, 4, 0], 'url':["http://paper.people.com.cn/rmrb/html/2024-05/29/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/28/nbs.D110000renmrb_01.htm","http://paper.people.com.cn/rmrb/html/2024-04/30/nbs.D110000renmrb_01.htm"]},
+      {'word': '解放日报', 'descriptions': ['张永泰的道路解放日报社论', '解放日报社论号召准备开展春耕生产完成土地改革是开展生产的关键战斗部队应该特别注意节约民力', '热烈响应解放日报号召冀鲁豫前线部队普遍学习王克勤'], 'frequency': [168, 4, 16, 24, 24, 0, 0, 8, 12, 4, 0]},
       {'word': '爱国', 'descriptions': ['蒋特阴谋捕杀爱国分子北平学生团结抗暴', '保卫祖国的安全与独立蒋区爱国运动新高涨', '国民党宣传上混乱矛盾曾招认美国扶日事实依照其主子命令又诬蔑学生爱国运动'], 'frequency': [236, 34, 1858, 3958, 4666, 140, 280, 454, 1382, 658, 354]},
       {'word': '生产节约', 'descriptions': ['迎接“五一”太行实业公司各矿厂将开展生产节约竞赛', '中直检查生产节约发现了不少积极分子与模范各机关已取得初步生产经验', '冀南深入生产节约任县各级机关积极淋盐熬硝'], 'frequency': [154, 8, 32, 10, 0, 0, 0, 0, 0, 2, 0]},
       {'word': '中共中央', 'descriptions': ['中共中央华中局的今后工作方针林彪同志在汉口“七一”纪念会上的报告', '中共中央发言人严斥蒋美肮脏买卖抵押海关换金元打内战维护国家主权只有加速打倒蒋介石', '中共中央发言人揭露蒋党阴谋迫害民主人士指出人民最后清算血债已为时不远'], 'frequency': [246, 36, 974, 866, 662, 122, 80, 242, 648, 828, 470]},
@@ -103,7 +103,7 @@ export default {
 		 this.chartData.frequency=foundWord.frequency;
 		 this.chartData.word=foundWord.word;
 		 this.chartData.index=0;
-		 this.chartData.url=foundWord.url;
+		 // this.chartData.url=foundWord.url;
       } else {
         console.log('未找到匹配的词描述');
       }

@@ -283,7 +283,7 @@ const getguide=()=>{
 	    popover: {
 	      className: 'first-step-popover-class',
 	      title: '词云图选中词',
-	      description: '展示在词云图中展示的词',
+	      description: '展示在词云图中展示的词，点击跳转到该词的解释。',
 	      position: 'left',
   
 	    }

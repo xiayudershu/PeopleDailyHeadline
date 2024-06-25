@@ -3,10 +3,11 @@
 	<div >
 		<br/>
 		
-		<img src="../../assets/main/时光之书素材/框框.png" alt="" width="1000px"   class="wordtext"/>
+		<!-- <img src="../../assets/main/时光之书素材/框框.png" alt="" width="1000px"   class="wordtext"/> -->
 		<div class="wordtexttitle"  id="timestep4">
-			
+			<a :href="cloudwordurl" target="_blank" class="cloudlink">
 			{{chartData.word}}
+			 </a>
 		</div>
 	</div>
     <div ref="chartContainer" style="width: 420px; height:38vh;" class="chartmain" id="timestep5"></div>
@@ -14,7 +15,7 @@
 
   <div class="tables" style="overflow-y: scroll; scrollbar-width: none;" id="timestep6">
     <div v-for="(item, index) in chartData.description" :key="index" class="data-item">
-		<a :href="chartData.url[index]" target="_blank" class="cloudlink">
+		<a :href="chartDataUrl[index]" target="_blank" class="cloudlink">
 	  <br/>
 	  <span class="number">{{ index + 1 }}</span>&nbsp;
       <span class="item-data">{{ item }} </span>
@@ -44,9 +45,23 @@ export default {
 
   setup(props) {
     const chartContainer = ref(null);
-    
+    const chartDataUrl=ref([]);
+	const cloudwordurl=ref();
+    const getcloudwordurl=(word)=>{
+		cloudwordurl.value="https://baike.baidu.com/item/"+word+"?fromModule=lemma_search-box";
+	}
+	const wordurl=(description)=>{
+    		 console.log(description)
+    		 return "http://paper.people.com.cn/rmrb/html/2024-04/29/nbs.D110000renmrb_01.htm";
+    }
+    const getwordsurl=(description)=>{
+    		 for(let i=0;i<description.length;i++){
+    			 chartDataUrl.value[i]=wordurl(description[i]);
+    		 }
+    }
     onMounted(() => {
-      const myChart = echarts5.init(chartContainer.value);
+
+    const myChart = echarts5.init(chartContainer.value);
 	const chartdatas=ref([])
 	 for(let i=0;i< props.chartData.frequency.length;i++){
 
@@ -97,7 +112,10 @@ export default {
 
       // 监听 chartData 变化，更新图表
       watchEffect(() => {
+		  getwordsurl(props.chartData.description);
+		  getcloudwordurl(props.chartData.word);
 		  const chartdatas=ref([])
+
 		   for(let i=0;i< props.chartData.frequency.length;i++){
 		  
 		  	 const color=ref("#ffffcc")
@@ -126,7 +144,9 @@ export default {
     });
 
     return {
-      chartContainer
+      chartContainer,
+	  chartDataUrl,
+	  cloudwordurl
     };
   }
 };
@@ -140,7 +160,7 @@ export default {
     color:black;
 	text-decoration: none; 
 }
-.wordtexttitle{
+/* .wordtexttitle{
 	position: absolute;
 	right:9vw;
 	width: 18vw;
@@ -150,6 +170,34 @@ export default {
 	color:black;
 	text-align: center;
 }
+ */
+
+
+.wordtexttitle {
+            position: absolute;
+            right:8vw;
+            width: 20vw;
+            top: 12vh;
+            margin: 20px auto;
+            background: linear-gradient(0, red 2px, red 2px) no-repeat left top/0 2px,
+                linear-gradient(-90deg, red 2px, red 2px) no-repeat right top/2px 0,
+                linear-gradient(-180deg, red 2px, red 2px) no-repeat right bottom/0 2px,
+                linear-gradient(-270deg, red 2px, red 2px) no-repeat left bottom/2px 0;
+            cursor: pointer;
+            line-height: 45px;
+            text-align: center;
+            font-weight: bold;
+            transition: all 300ms;
+			font-size: 32px;
+			font-family: "JBS";
+			color:black;
+        }
+        .wordtexttitle:hover {
+            background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+        }
+
+
+
 .wordtext{
 	position: absolute;
 	top: 15vh;
